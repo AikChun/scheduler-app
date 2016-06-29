@@ -18,3 +18,8 @@ Route::get('/', function () {
 Route::auth();
 
 Route::get('/home', 'HomeController@index');
+
+Route::get('users', 'UsersController@index');
+//Route::get('users', function() {
+//    return view('users')->with('users', \App\User::paginate(10));
+//});
