@@ -1,10 +1,8 @@
 # Scheduler App
 
-This scheduler aims to deliver reports and notifications for our customers on demand.
+This scheduler aims to assist in creating, updating people of scheduled classes when it is created/updated. 
 
-It also automates such notifications when updates are made.
-
-Our aim is to improve your productivity. NO MORE MANUAL WORK!
+It also sends notifications when updates are made.
 
 ## Powered by Laravel
 
