@@ -6917,4 +6917,3 @@ Picker.extend( 'pickadate', DatePicker )
       }
     }; // Plugin end
 }( jQuery ));
-//# sourceMappingURL=materialize.js.map
