@@ -1,7 +1,7 @@
 .tabs {
-  display: flex;
+  @include flexbox();
   position: relative;
-  overflow-x: auto;
+  overflow-x: hidden; //MCHANGE
   overflow-y: hidden;
   height: 48px;
   background-color: $tabs-bg-color;
@@ -35,7 +35,7 @@
       height: 100%;
       text-overflow: ellipsis;
       overflow: hidden;
-      transition: color .28s ease;
+      @include transition( color .28s ease);
       &:hover {
         color: lighten($tabs-text-color, 20%);
       }

@@ -18,11 +18,7 @@ main {
 }
 
 ul {
-  &.browser-default {
-    list-style-type: initial;
-  }
-
-  list-style-type: none;
+	list-style-type: none;
 }
 
 a {
@@ -36,8 +32,8 @@ a {
 
 // Positioning
 .valign-wrapper {
-  display: flex;
-  align-items: center;
+  @include flexbox();
+  @include align(center);
 
   .valign {
     display: block;
@@ -79,11 +75,6 @@ ul {
 }
 .z-depth-5{
   box-shadow: 0 27px 24px 0 rgba(0, 0, 0, 0.2), 0 40px 77px 0 rgba(0, 0, 0, 0.22);
-}
-
-.hoverable {
-  transition: box-shadow .25s;
-  box-shadow: 0;
 }
 
 .hoverable:hover {
@@ -204,8 +195,8 @@ video.responsive-video {
   [class^="mdi-"], [class*="mdi-"],
   i.material-icons {
     display: inline-block;
-    float: left;
-    font-size: 24px;
+    // float: left; //CHANGE
+    font-size: 18px; //CHANGE
   }
 
   &:before {
@@ -311,27 +302,27 @@ ul.staggered-list li {
 }
 .show-on-large {
   @media #{$large-and-up} {
-    display: block !important;
+    display: initial !important;
   }
 }
 .show-on-medium {
   @media only screen and (min-width: $small-screen) and (max-width: $medium-screen) {
-    display: block !important;
+    display: initial !important;
   }
 }
 .show-on-small {
   @media #{$small-and-down} {
-    display: block !important;
+    display: initial !important;
   }
 }
 .show-on-medium-and-up {
   @media #{$medium-and-up} {
-    display: block !important;
+    display: initial !important;
   }
 }
 .show-on-medium-and-down {
   @media #{$medium-and-down} {
-    display: block !important;
+    display: initial !important;
   }
 }
 
@@ -379,12 +370,12 @@ table {
     }
 
     > tr > td {
-      border-radius: 0;
+      border-radius: 0px;
     }
   }
 
   &.highlight > tbody > tr {
-    transition: background-color .25s ease;
+    @include transition(background-color .25s ease);
     &:hover {
       background-color: $table-striped-color;
     }
@@ -393,6 +384,7 @@ table {
   &.centered {
     thead tr th, tbody tr td {
       text-align: center;
+
     }
   }
 
@@ -419,10 +411,6 @@ td, th{
     border-spacing: 0;
     display: block;
     position: relative;
-
-    td:empty:before {
-      content: '\00a0';
-    }
 
     th,
     td {
@@ -556,7 +544,7 @@ td, th{
   }
   a.collection-item{
     display: block;
-    transition: .25s;
+    @include transition(.25s);
     color: $collection-link-color;
     &:not(.active) {
       &:hover {
@@ -602,7 +590,7 @@ span.badge {
   color: color('grey', 'darken-1');
   position: absolute;
   right: 15px;
-  box-sizing: border-box;
+  @include box-sizing(border-box);
 
   &.new {
     font-weight: 300;
@@ -649,11 +637,12 @@ nav ul a span.badge {
     overflow: hidden;
   .determinate {
     position: absolute;
+    background-color: inherit;
     top: 0;
     left: 0;
     bottom: 0;
     background-color: $progress-bar-color;
-    transition: width .3s linear;
+    @include transition(width .3s linear);
   }
   .indeterminate {
     background-color: $progress-bar-color;
@@ -666,7 +655,7 @@ nav ul a span.badge {
       bottom: 0;
       will-change: left, right;
       // Custom bezier
-      animation: indeterminate 2.1s cubic-bezier(0.650, 0.815, 0.735, 0.395) infinite;
+      @include animation(indeterminate 2.1s cubic-bezier(0.650, 0.815, 0.735, 0.395) infinite);
 
     }
     &:after {
@@ -678,34 +667,34 @@ nav ul a span.badge {
       bottom: 0;
       will-change: left, right;
       // Custom bezier
-      animation: indeterminate-short 2.1s cubic-bezier(0.165, 0.840, 0.440, 1.000) infinite;
-      animation-delay: 1.15s;
+      @include animation(indeterminate-short 2.1s cubic-bezier(0.165, 0.840, 0.440, 1.000) infinite);
+      @include animation-delay(1.15s);
     }
   }
 }
-@keyframes indeterminate {
+@include keyframes(indeterminate) {
     0% {
-      left: -35%;
-      right:100%;
-    }
+            left: -35%;
+            right:100%;
+        }
     60% {
-      left: 100%;
-      right: -90%;
+        left: 100%;
+        right: -90%;
     }
     100% {
-      left: 100%;
-      right: -90%;
+        left: 100%;
+        right: -90%;
     }
 }
 
-@keyframes indeterminate-short {
+@include keyframes(indeterminate-short) {
     0% {
-      left: -200%;
-      right: 100%;
+        left: -200%;
+        right: 100%;
     }
     60% {
-      left: 107%;
-      right: -8%;
+        left: 107%;
+        right: -8%;
     }
     100% {
       left: 107%;
