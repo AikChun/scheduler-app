@@ -21,7 +21,9 @@ Route::get('/home', 'HomeController@index');
 
 Route::get('users', 'UsersController@index');
 
-Route::get('/modules/create', 'ModulesController@create');
+Route::get('/courses/create', 'CoursesController@create');
+
+Route::post('/courses/store', 'CoursesController@store');
 //Route::get('users', function() {
 //    return view('users')->with('users', \App\User::paginate(10));
 //});
