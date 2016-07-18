@@ -30,12 +30,8 @@ Author URL: http://www.themeforest.net/user/geekslabs
 <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <!-- CORE CSS-->    
 <link href="/css/main.css" type="text/css" rel="stylesheet" media="screen,projection">
-<!-- CSS for full screen (Layout-2)-->    
-<link href="/css/layouts/style-fullscreen.css" type="text/css" rel="stylesheet" media="screen,projection">
-<!-- Custome CSS-->    
-<link href="/css/custom/custom.css" type="text/css" rel="stylesheet" media="screen,projection">
 
-
+@yield('css')
 </head>
 
 <body>
@@ -236,7 +232,7 @@ Author URL: http://www.themeforest.net/user/geekslabs
             <!--scrollbar-->
             <script type="text/javascript" src="/js/plugins/perfect-scrollbar/perfect-scrollbar.min.js"></script>
 
-
+            @yield('js')
             <!-- Toast Notification -->
 
             </body>

@@ -12,6 +12,6 @@ var elixir = require('laravel-elixir');
  */
 
 elixir(function(mix) {
-    mix.sass(['materialize.scss', 'style.scss'], 'public/css/main.css');
+    mix.sass(['materialize.scss', 'style.scss', 'custom/custom.scss', 'theme-components/layouts/style-fullscreen.scss'], 'public/css/main.css');
     mix.scripts(['materialize.js', 'plugins.js', 'custom-script.js'], 'public/js/main.js');
 });

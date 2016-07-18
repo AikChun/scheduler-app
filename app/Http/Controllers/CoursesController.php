@@ -31,8 +31,8 @@ class CoursesController extends Controller
             'programme_id'       => 'required',
             'title'              => 'required',
             'code'               => 'required',
-            'number_of_students' => 'numeric',
-            'number_of_groups'   => 'numeric',
+            'number_of_students' => 'numeric|Min:1',
+            'number_of_groups'   => 'numeric|Min:1',
         ]);
         $course = new Course($request->all());
         $course->save();
