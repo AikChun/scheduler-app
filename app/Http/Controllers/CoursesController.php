@@ -3,12 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 use App\Http\Requests;
 use App\Course;
 
 class CoursesController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     //
     /**
     * Method for adding new module
@@ -38,6 +41,5 @@ class CoursesController extends Controller
         $course->save();
         return back();
         //return redirect()->action('CoursesController@create');
-
     }
 }
