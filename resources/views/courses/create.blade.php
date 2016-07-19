@@ -1,9 +1,6 @@
 @extends('layouts.app')
 
 @section('css')
-  <link href="/js/plugins/prism/prism.css" type="text/css" rel="stylesheet" media="screen,projection">
-  <link href="/js/plugins/perfect-scrollbar/perfect-scrollbar.css" type="text/css" rel="stylesheet" media="screen,projection">
-  <link href="/js/plugins/chartist-js/chartist.min.css" type="text/css" rel="stylesheet" media="screen,projection">
   <style type="text/css">
   .input-field div.error{
     position: relative;
@@ -47,6 +44,7 @@
   }
   </style>
 @endsection
+@include('sidebars.admin')
 @section('content')
     <div class="row">
     <div class="col s12 m12 l12">
@@ -115,49 +113,46 @@
         </div>
     </div>
 </div>
+@endsection
 
-  @section('js')
-  <script type="text/javascript" src="/js/plugins/jquery-validation/jquery.validate.min.js"></script>
-  <script type="text/javascript" src="/js/plugins/jquery-validation/additional-methods.min.js"></script>
-  <script type="text/javascript">
-  $(document).ready(function () {
-    //your code here
+@section('js')
+@include('forms.validation')
+<script type="text/javascript">
+$(document).ready(function () {
+//your code here
 
-    $("#course_create_form").validate({
-        rules: {
-            title: {
-                required: true,
-                minlength: 5
-            },
-            number_of_students: {
-              number: true,
-              min: 1
-            }
+$("#course_create_form").validate({
+    rules: {
+        title: {
+            required: true,
+            minlength: 5
         },
-        //For custom messages
-        messages: {
-            title: {
-              required: "Enter a title",
-              minlength: "Enter at least 5 characters"
-            },
-            number_of_students: {
-              required: "Enter a number",
-              min: "Minimum value of 1"
-            }
-        },
-        errorElement : 'div',
-        errorPlacement: function(error, element) {
-          var placement = $(element).data('error');
-          if (placement) {
-            $(placement).append(error)
-          } else {
-            error.insertAfter(element);
-          }
+        number_of_students: {
+          number: true,
+          min: 1
         }
-     });
-  });
-  </script>
-  @endsection
-
-
+    },
+    //For custom messages
+    messages: {
+        title: {
+          required: "Enter a title",
+          minlength: "Enter at least 5 characters"
+        },
+        number_of_students: {
+          required: "Enter a number",
+          min: "Minimum value of 1"
+        }
+    },
+    errorElement : 'div',
+    errorPlacement: function(error, element) {
+      var placement = $(element).data('error');
+      if (placement) {
+        $(placement).append(error)
+      } else {
+        error.insertAfter(element);
+      }
+    }
+ });
+});
+</script>
 @endsection

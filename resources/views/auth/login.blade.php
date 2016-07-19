@@ -1,17 +1,36 @@
 @extends('layouts.app')
 
+@section('css')
+  <style type="text/css">
+  .input-field div.error{
+    position: relative;
+    top: -1rem;
+    left: 0rem;
+    font-size: 0.8rem;
+    color:#FF4081;
+    -webkit-transform: translateY(0%);
+    -ms-transform: translateY(0%);
+    -o-transform: translateY(0%);
+    transform: translateY(0%);
+  }
+  .input-field label.active{
+      width:100%;
+  }
+  </style>
+@endsection
 @section('content')
     <div class="row">
        <div class="col s12 m6 l6 offset-l3 offset-m3">
           <div class="card">
             <div class="card-content">
                 <span class="card-title">Login</span>
-                <form class="form-horizontal" role="form" method="POST" action="{{ url('/login') }}">
+                <form class="form-horizontal" id="login_form" role="form" method="POST" action="{{ url('/login') }}">
                     {{ csrf_field() }}
                     <div class="row">
-                        <div class="input-field col s12 m12 l12 form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <input id="email" type="email" class="validate" name="email">
-                            <label for="email" data-error="Please supply a valid email" data-success="">Email</label>
+                        <div class="input-field col s12 m12 l12 ">
+                            <input id="email" type="email" class="validate" name="email" data-error=".errorTxt1">
+                            <label for="email" >Email</label>
+                            <div class="errorTxt1"></div>
 
                             @if ($errors->has('email'))
                                 <span class="help-block">
@@ -21,15 +40,11 @@
                           </div>
                     </div>
                     <div class="row">
-                      <div class="input-field col s12 m12 l12 form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                        <input id="password" type="password" class="validate" name="password">
+                      <div class="input-field col s12 m12 l12 ">
+                        <input id="password" type="password" name="password" data-error=".errorTxt2">
                         <label for="password">Password</label>
+                        <div class="errorTxt2"></div>
 
-                        @if ($errors->has('password'))
-                            <span class="help-block">
-                                <strong>{{ $errors->first('password') }}</strong>
-                            </span>
-                        @endif
                       </div>  
                     </div>
 
@@ -70,4 +85,45 @@
       </div> 
         
     </div>
+@endsection
+
+@section('js')
+<script type="text/javascript" src="/js/plugins/jquery-validation/jquery.validate.min.js"></script>
+<script type="text/javascript" src="/js/plugins/jquery-validation/additional-methods.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function () {
+  //your code here
+
+    $("#login_form").validate({
+        rules: {
+            email: {
+                required: true,
+                email: true
+            },
+            password: {
+              required: true
+            }
+        },
+        //For custom messages
+        messages: {
+            email: {
+              required: "Enter an email",
+              email: "Input has to be in the format of 'example@examplemail.com'"
+            },
+            password: {
+              required: "Enter a password"
+            }
+        },
+        errorElement : 'div',
+        errorPlacement: function(error, element) {
+          var placement = $(element).data('error');
+          if (placement) {
+            $(placement).append(error)
+          } else {
+            error.insertAfter(element);
+          }
+        }
+     });
+    });
+</script>
 @endsection
