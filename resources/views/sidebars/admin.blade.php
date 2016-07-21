@@ -25,32 +25,33 @@
             </div>
         </div>
         </li>
-        <li class="bold"><a href="index.html" class="waves-effect waves-cyan"><i class="mdi-action-dashboard"></i> Dashboard</a>
+        <li class="bold"><a href="/" class="waves-effect waves-cyan"><i class="mdi-action-dashboard"></i> Dashboard</a>
         </li>
         <li class="no-padding">
-        <ul class="collapsible collapsible-accordion">
-            <li class="bold"><a class="collapsible-header waves-effect waves-cyan "><i class="mdi-action-view-carousel"></i> Modules</a>
-            <div class="collapsible-body">
-                <ul>
-                    <li class="active"><a href="/modules/create">Add</a>
-                    </li>
-                </ul>
-            </div>
-            </li>
-        </ul>
-        <!--<ul class="collapsible collapsible-accordion">
-        <li class="bold"><a class="collapsible-header waves-effect waves-cyan active"><i class="mdi-action-view-carousel"></i> Layouts</a>
-        <div class="collapsible-body">
-        <ul>
-        <li class="active"><a href="layout-fullscreen.html">Full Screen</a>
+          <ul class="collapsible collapsible-accordion">
+              <li class="bold"><a class="collapsible-header waves-effect waves-cyan "><i class="mdi-action-view-carousel"></i> Programmes</a>
+              <div class="collapsible-body">
+                  <ul>
+                      <li><a href="/programmes/">All</a></li>
+                      <li><a href="/programmes/create">Add</a></li>
+                  </ul>
+              </div>
+              </li>
+          </ul>
         </li>
-        <li><a href="layout-horizontal-menu.html">Horizontal Menu</a>
+        <li class="no-padding">
+          <ul class="collapsible collapsible-accordion">
+              <li class="bold"><a class="collapsible-header waves-effect waves-cyan "><i class="mdi-action-view-carousel"></i> Modules</a>
+              <div class="collapsible-body">
+                  <ul>
+                      <li><a href="/modules/">All</a></li>
+                      <li><a href="/modules/create">Add</a></li>
+                  </ul>
+              </div>
+              </li>
+          </ul>
         </li>
-        </ul>
-        </div>
-        </li>
-        </ul>-->
-        </li>
+
     </ul>
     <a href="#" data-activates="slide-out" class="sidebar-collapse btn-floating btn-medium waves-effect waves-light cyan" ><i class="mdi-navigation-menu"></i></a>
 </aside>

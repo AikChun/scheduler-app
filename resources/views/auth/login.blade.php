@@ -1,23 +1,6 @@
 @extends('layouts.app')
 
-@section('css')
-  <style type="text/css">
-  .input-field div.error{
-    position: relative;
-    top: -1rem;
-    left: 0rem;
-    font-size: 0.8rem;
-    color:#FF4081;
-    -webkit-transform: translateY(0%);
-    -ms-transform: translateY(0%);
-    -o-transform: translateY(0%);
-    transform: translateY(0%);
-  }
-  .input-field label.active{
-      width:100%;
-  }
-  </style>
-@endsection
+@include('forms.validation_css')
 @section('content')
     <div class="row">
        <div class="col s12 m6 l6 offset-l3 offset-m3">
@@ -45,7 +28,7 @@
                         <label for="password">Password</label>
                         <div class="errorTxt2"></div>
 
-                      </div>  
+                      </div>
                     </div>
 
                   <div class="row">
@@ -62,7 +45,7 @@
                         </button>
 
                         <!-- <a class="btn btn-link" href="{{ url('/password/reset') }}">Forgot Your Password?</a>-->
-                    </div> 
+                    </div>
                   </div>
 
                   <div class="row">
@@ -78,18 +61,16 @@
                       </div>
                   </div>
                   </div>
-                        
+
                 </form>
             </div>
           </div>
-      </div> 
-        
+      </div>
     </div>
 @endsection
 
 @section('js')
-<script type="text/javascript" src="/js/plugins/jquery-validation/jquery.validate.min.js"></script>
-<script type="text/javascript" src="/js/plugins/jquery-validation/additional-methods.min.js"></script>
+@include('forms.validation_js')
 <script type="text/javascript">
 $(document).ready(function () {
   //your code here

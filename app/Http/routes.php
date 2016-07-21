@@ -21,12 +21,11 @@ Route::get('/', function () {
 Route::auth();
 
 Route::get('/home', 'HomeController@index');
-
 Route::get('/users', 'UsersController@index');
 
-Route::get('/courses/create', 'CoursesController@create');
+Route::get('/programmes/', 'ProgrammesController@index');
+Route::get('/programmes/create', 'ProgrammesController@create');
+Route::post('/programmes/store', 'ProgrammesController@store');
 
+Route::get('/courses/create', 'CoursesController@create');
 Route::post('/courses/store', 'CoursesController@store');
-//Route::get('users', function() {
-//    return view('users')->with('users', \App\User::paginate(10));
-//});

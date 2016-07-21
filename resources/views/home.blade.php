@@ -1,7 +1,7 @@
 @extends('layouts.app')
-
+@include('sidebars.admin')
 @section('content')
-    <div class="row">
+<div class="row">
     <div id="responsive-table">
         <h4 class="header">Schedule of Courses</h4>
         <div class="row">

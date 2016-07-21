@@ -28,7 +28,7 @@ Author URL: http://www.themeforest.net/user/geekslabs
 
 
 <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-<!-- CORE CSS-->    
+<!-- CORE CSS-->
 <link href="/css/main.css" type="text/css" rel="stylesheet" media="screen,projection">
 
 @yield('css')
@@ -37,7 +37,7 @@ Author URL: http://www.themeforest.net/user/geekslabs
 <body>
 <!-- Start Page Loading -->
 <div id="loader-wrapper">
-    <div id="loader"></div>        
+    <div id="loader"></div>
     <div class="loader-section section-left"></div>
     <div class="loader-section section-right"></div>
 </div>
@@ -51,19 +51,19 @@ Author URL: http://www.themeforest.net/user/geekslabs
     <div class="navbar-fixed">
         <nav class="navbar-color">
             <div class="nav-wrapper">
-                <ul class="left">                      
+                <ul class="left">
                     <li><h1 class="logo-wrapper"><a href="/home" class="brand-logo darken-1 center">Scheduler</a> <span class="logo-text">Materialize</span></h1></li>
                 </ul>
                 <ul class="right hide-on-med-and-down">
 
                     <!--<li><a href="javascript:void(0);" class="waves-effect waves-block waves-light translation-button"  data-activates="translation-dropdown"><img src="images/flag-icons/United-States.png" alt="USA" /></a>
                     </li>-->
-                    </li>                        
+                    </li>
                     @if(Auth::user())
                         <li>
                     <a class="waves-effect waves-block waves-light dropdown-button" href="#!" data-activates="user-profile-dropdown">{{ Auth::user()->name }}<i class="mdi-navigation-arrow-drop-down right"></i>
                     </a>
-                @else 
+                @else
                     <a href="/login" class="waves-effect waves-block waves-light ">Login<!--<i class="mdi-communication-chat"></i>--></a>
                 @endif
                 </li>
@@ -148,11 +148,10 @@ Author URL: http://www.themeforest.net/user/geekslabs
 <div class="wrapper">
 
 <!-- START LEFT SIDEBAR NAV-->
-@if(Auth::user()) 
+@if(Auth::user())
     @yield('sidebar')
 @endif
 <!-- END LEFT SIDEBAR NAV-->
-
 <!-- //////////////////////////////////////////////////////////////////////////// -->
 
 <!-- START CONTENT -->
