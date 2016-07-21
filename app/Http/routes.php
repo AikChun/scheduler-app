@@ -12,6 +12,9 @@
 */
 
 Route::get('/', function () {
+    if(Auth::user()) {
+        return redirect()->action('HomeController@index');
+    }
     return view('auth.login');
 });
 
