@@ -10,6 +10,12 @@ use \DB;
 
 class UsersController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     //
     /**
     * Show list of users
@@ -19,5 +25,5 @@ class UsersController extends Controller
         $users = DB::table('users')->paginate(10);
         return view('users.index', compact('users'));
     }
-    
+
 }

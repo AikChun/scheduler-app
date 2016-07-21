@@ -12,10 +12,11 @@ class CoursesController extends Controller
     {
         $this->middleware('auth');
     }
+
     //
     /**
     * Method for adding new module
-    * 
+    *
     */
     public function create()
     {
