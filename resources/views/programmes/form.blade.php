@@ -1,3 +1,13 @@
+
+@if(count($errors) > 0)
+  <div class="row">
+      <div class="input-field">
+        @foreach($errors->all() as $error)
+          <div class="error"> {{ $error }} </div>
+        @endforeach
+      </div>
+  </div>
+@endif
 <div class="row">
   <div class="input-field col s12">
     <select id="programme_type_id" name="programme_type_id" >
@@ -12,17 +22,10 @@
 <div class="row">
   <div class="input-field col s12">
     <label for="name">Name*</label>
-    <input id="name" type="text" name="name" data-error=".errorTxt1">
+    <input id="name" type="text" name="name" >
   </div>
 </div>
 
-@if(count($errors) > 0)
-  <div class="input-field">
-    @foreach($errors->all() as $error)
-      <div class="error"> {{ $error }} </div>
-    @endforeach
-  </div>
-@endif
 
 <div class="row">
   <div class="input-field col s12">

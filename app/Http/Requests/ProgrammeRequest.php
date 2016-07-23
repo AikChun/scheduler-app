@@ -26,6 +26,8 @@ class ProgrammeRequest extends Request
         return [
             'name'              => 'required',
             'programme_type_id' => 'required',
+            'year'              => 'required',
+            'semester' => 'required',
         ];
     }
 }
