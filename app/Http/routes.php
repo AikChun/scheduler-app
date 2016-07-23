@@ -23,9 +23,10 @@ Route::auth();
 Route::get('/home', 'HomeController@index');
 Route::get('/users', 'UsersController@index');
 
-Route::get('/programmes/', 'ProgrammesController@index');
-Route::get('/programmes/create', 'ProgrammesController@create');
-Route::post('/programmes/store', 'ProgrammesController@store');
+Route::resource('programmes', 'ProgrammesController');
+//Route::get('/programmes/', 'ProgrammesController@index');
+//Route::get('/programmes/create', 'ProgrammesController@create');
+//Route::post('/programmes/store', 'ProgrammesController@store');
 
 Route::get('/courses/create', 'CoursesController@create');
 Route::post('/courses/store', 'CoursesController@store');

@@ -30,8 +30,9 @@ Author URL: http://www.themeforest.net/user/geekslabs
 <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <!-- CORE CSS-->
 <link href="/css/main.css" type="text/css" rel="stylesheet" media="screen,projection">
+<link rel="stylesheet" href="/css/libs.css" type="text/css">
+<!-- validation css -->
 
-@yield('css')
 </head>
 
 <body>
@@ -168,16 +169,15 @@ Author URL: http://www.themeforest.net/user/geekslabs
 Scripts
 ================================================ -->
 
-<!-- jQuery Library -->
-<script type="text/javascript" src="/js/plugins/jquery-1.11.2.min.js"></script>
 <!--materialize js-->
 <script type="text/javascript" src="/js/main.js"></script>
 <!--scrollbar-->
-<script type="text/javascript" src="/js/plugins/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+<script type="text/javascript" src="/js/libs.js"></script>
 
-@yield('js')
+@include('flash')
+
+
 <!-- Toast Notification -->
-
 </body>
 
 </html>

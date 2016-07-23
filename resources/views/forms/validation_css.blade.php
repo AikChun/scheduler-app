@@ -1,4 +1,3 @@
-@section('css')
 <style type="text/css">
   .input-field div.error{
     position: relative;
@@ -15,4 +14,3 @@
       width:100%;
   }
   </style>
-@endsection
