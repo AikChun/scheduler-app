@@ -150,7 +150,7 @@ Author URL: http://www.themeforest.net/user/geekslabs
 
 <!-- START LEFT SIDEBAR NAV-->
 @if(Auth::user())
-    @yield('sidebar')
+    @include('sidebars.admin')
 @endif
 <!-- END LEFT SIDEBAR NAV-->
 <!-- //////////////////////////////////////////////////////////////////////////// -->

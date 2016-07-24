@@ -1,5 +1,4 @@
 @extends('layouts.app')
-@include('sidebars.admin')
 @section('content')
 <div class="row">
     <div id="responsive-table">

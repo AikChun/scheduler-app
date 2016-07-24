@@ -1,4 +1,3 @@
-@section('sidebar')
 <aside id="left-sidebar-nav">
     <ul id="slide-out" class="side-nav leftside-navigation">
         <li class="user-details cyan darken-2">
@@ -55,4 +54,3 @@
     </ul>
     <a href="#" data-activates="slide-out" class="sidebar-collapse btn-floating btn-medium waves-effect waves-light cyan" ><i class="mdi-navigation-menu"></i></a>
 </aside>
-@endsection

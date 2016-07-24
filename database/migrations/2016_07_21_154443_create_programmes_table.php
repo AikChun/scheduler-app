@@ -15,7 +15,10 @@ class CreateProgrammesTable extends Migration
         Schema::create('programmes', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->integer('programme_type_id');
+            $table->integer('programme_type_id')->unsigned();
+            $table->foreign('programme_type_id')->references('id')->on('programme_types')->onDelete('cascade');
+            $table->string('year', 12);
+            $table->integer('semester');
             $table->timestamps();
         });
     }
