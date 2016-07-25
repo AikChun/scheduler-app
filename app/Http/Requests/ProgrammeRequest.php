@@ -24,10 +24,10 @@ class ProgrammeRequest extends Request
     public function rules()
     {
         return [
-            'name'              => 'required',
-            'programme_type_id' => 'required',
-            'year'              => 'required',
-            'semester' => 'required',
+            'name'                => 'required',
+            'programme_type_name' => 'required',
+            'semester'            => 'required',
+            'year'                => 'required',
         ];
     }
 }

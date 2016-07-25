@@ -32,6 +32,6 @@ elixir(function(mix) {
         .styles([
             'libs/jquery-validation.css',
             'libs/sweetalert.css'
-        ], 'public/css/libs.css')
+        ], 'public/css/libs.css');
 
 });

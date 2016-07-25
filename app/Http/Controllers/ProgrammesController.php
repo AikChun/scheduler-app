@@ -17,20 +17,42 @@ class ProgrammesController extends Controller
     public function index()
     {
         $programmes = Programme::all();
+
         return view('programmes.index', compact('programmes'));
     }
 
     public function create()
     {
+        $allProgrammes = Programme::all()->toArray();
+        $programmes    = array_map(function($programme) {
+            return $programme->name;
+        }, $allProgrammes);
+
+        $programmes     = array_unique($programmes);
         $programmeTypes = ProgrammeType::all();
-        flash('Hello World!', 'this is my message.');
-        return view('programmes.create', compact('programmeTypes'));
+
+        return view('programmes.create', compact('programmeTypes', 'programmes'));
     }
 
+    /**
+     * store - method to persist programme data
+     *
+     * @param ProgrammeRequest $request - form data
+     */
     public function store(ProgrammeRequest $request)
     {
-        $programme = new Programme($request->all());
-        $programme->save();
-        return back();
+        // prep data
+        // Find or create programme type
+        $programmeType = ProgrammeType::firstOrCreate(['name' => $request->programme_type_name]);
+
+        //Assign programmeType->id to $request->programme_type_id
+        $request->programme_type_id = $programmeType->id;
+
+        //create Programme
+        Programme::create($request->all());
+
+        flash()->success('Success!', 'You have successfully created a new Programme!');
+
+        return redirect()->back();
     }
 }

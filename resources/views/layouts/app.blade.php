@@ -176,8 +176,6 @@ Scripts
 
 @include('flash')
 
-
-<!-- Toast Notification -->
 </body>
 
 </html>

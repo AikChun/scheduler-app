@@ -9,19 +9,25 @@
 @endif
 <div class="row">
   <div class="input-field col s12">
-    <select id="programme_type_id" name="programme_type_id" >
-      <option value="" disabled selected>Choose Programme Type</option>
-      @foreach($programmeTypes as $type)
-        <option value="{{ $type->id }}">{{ $type->name }}</option>
-      @endforeach
-    </select>
+
+    <input type="text" name="programme_type_name" list="programme_types">
+      <datalist id="programme_types">
+          @foreach($programmeTypes as $programmeType)
+            <option value="{{ $programmeType->name }}">
+          @endforeach
+      </datalist>
     <label>Select Programme Type*</label>
   </div>
 </div>
 <div class="row">
   <div class="input-field col s12">
     <label for="name">Name*</label>
-    <input id="name" type="text" name="name" >
+    <input id="name" type="text" name="name" datalist="programmes">
+    <datalist id="programmes">
+        @foreach($programmes as $programme)
+            <option value="{{ $programme->name }}">
+        @endforeach
+    </datalist>
   </div>
 </div>
 

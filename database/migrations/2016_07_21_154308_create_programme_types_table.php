@@ -14,7 +14,7 @@ class CreateProgrammeTypesTable extends Migration
     {
         Schema::create('programme_types', function (Blueprint $table) {
             $table->increments('id');
-            $table->char('name', 10);
+            $table->string('name');
             $table->timestamps();
         });
     }
