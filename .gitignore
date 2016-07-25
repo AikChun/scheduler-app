@@ -6,3 +6,4 @@ Homestead.json
 .env
 *.swp
 **/.DS_Store
+tasks

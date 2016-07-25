@@ -17,6 +17,9 @@ class CreateProgrammesTable extends Migration
             $table->string('name');
             $table->integer('programme_type_id')->unsigned();
             $table->foreign('programme_type_id')->references('id')->on('programme_types')->onDelete('cascade');
+            $table->integer('facilitator')->unsigned();
+            $table->datetime('recess_start_date');
+            $table->datetime('recess_end_date');
             $table->string('year', 12);
             $table->integer('semester');
             $table->timestamps();

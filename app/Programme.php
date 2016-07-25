@@ -21,4 +21,9 @@ class Programme extends Model
     {
         return $this->belongsTo(ProgrammeType::class);
     }
+
+    public function facilitator()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

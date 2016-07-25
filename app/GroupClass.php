@@ -2,10 +2,10 @@
 
 namespace App;
 
-use App\Class;
+use App\GroupClass;
 use DB;
 use Illuminate\Database\Eloquent\Model;
-class Class extends Model
+class GroupClass extends Model
 {
     //
     /**
@@ -16,14 +16,9 @@ class Class extends Model
         return $this->belongsTo(App\User::class, 'lecturer_id');
     }
 
-    public function student_group()
+    public function course()
     {
-        return $this->belongsTo(App\StudentGroup::class);
+        return $this->belongsTo(App\Course::class);
     }
 
-    public function module()
-    {
-        return $this->belongsTo(App\Module::class);
-    }
-    
 }
