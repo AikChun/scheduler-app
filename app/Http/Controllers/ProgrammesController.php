@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Gate;
 use App\ProgrammeType;
 use App\Programme;
 use Illuminate\Http\Request;
@@ -23,12 +23,13 @@ class ProgrammesController extends Controller
 
     public function create()
     {
-        $allProgrammes = Programme::all()->toArray();
-        $programmes    = array_map(function($programme) {
-            return $programme->name;
-        }, $allProgrammes);
+        $programme = new Programme;
+        if(Gate::denies('update', $programme )) {
+            abort(403, 'Nope.');
+        }
 
-        $programmes     = array_unique($programmes);
+        $programmes = $programme::listUniqueProgrammeNames();
+
         $programmeTypes = ProgrammeType::all();
 
         return view('programmes.create', compact('programmeTypes', 'programmes'));

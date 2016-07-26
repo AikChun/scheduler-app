@@ -26,4 +26,11 @@ class Programme extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public static function listUniqueProgrammeNames()
+    {
+        return array_map(function($programme) {
+            return $programme->name;
+        }, self::all()->toArray());
+    }
 }
