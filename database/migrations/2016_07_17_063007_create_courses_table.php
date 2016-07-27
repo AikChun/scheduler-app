@@ -22,8 +22,6 @@ class CreateCoursesTable extends Migration
             $table->integer('number_of_students');
             $table->date('start_date');
             $table->date('end_date');
-            $table->char('year', 4);
-            $table->char('semester', 2);
             $table->timestamps();
         });
     }

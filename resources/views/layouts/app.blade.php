@@ -174,7 +174,10 @@ Scripts
 <!--scrollbar-->
 <script type="text/javascript" src="/js/libs.js"></script>
 
+@yield('js')
+
 @include('flash')
+
 
 </body>
 

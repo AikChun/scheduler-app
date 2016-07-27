@@ -2,9 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Http\Requests;
 use App\Course;
+use App\CourseTitle;
+use App\CourseCode;
+use App\Http\Requests\CourseRequest;
+use App\ProgrammeName;
+use Carbon\Carbon;
+use Illuminate\Http\Request;
 
 class CoursesController extends Controller
 {
@@ -20,8 +24,15 @@ class CoursesController extends Controller
     */
     public function create()
     {
-        //code
-        return view('courses.create');
+        // Grab all the programme names
+        $programmeNames = ProgrammeName::all();
+
+        // Grab all the course titles
+        $courseTitles = CourseTitle::all();
+
+        // Grab all the course codes
+        $courseCodes = CourseCode::all();
+        return view('courses.create', compact('programmeNames', 'courseTitles', 'courseCodes'));
     }
 
     /**
@@ -29,17 +40,11 @@ class CoursesController extends Controller
     * @params $request
     * @return boolean
     */
-    public function store(Request $request)
+    public function store(CourseRequest $request)
     {
-        $this->validate($request, [
-            'programme_id'       => 'required',
-            'title'              => 'required',
-            'code'               => 'required',
-            'number_of_students' => 'numeric|Min:1',
-            'number_of_groups'   => 'numeric|Min:1',
-        ]);
-        $course = new Course($request->all());
-        $course->save();
+
+        Course::create($request->all());
+        flash()->success('Success!', 'You have created a new Course!');
         return back();
         //return redirect()->action('CoursesController@create');
     }

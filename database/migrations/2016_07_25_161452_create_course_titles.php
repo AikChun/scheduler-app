@@ -15,7 +15,6 @@ class CreateCourseTitles extends Migration
         Schema::create('course_titles', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title');
-            $table->timestamps();
         });
     }
 

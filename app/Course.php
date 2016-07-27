@@ -13,6 +13,9 @@ class Course extends Model
         'code',
         'number_of_students',
         'number_of_groups',
+        'estimated_number_of_students',
+        'start_date',
+        'end_date'
     ];
 
     public function programme()
