@@ -20,8 +20,8 @@ class CreateCoursesTable extends Migration
             $table->integer('number_of_groups');
             $table->integer('estimated_number_of_students');
             $table->integer('number_of_students');
-            $table->date('start_date');
-            $table->date('end_date');
+            $table->timestamp('start_date');
+            $table->timestamp('end_date');
             $table->timestamps();
         });
     }

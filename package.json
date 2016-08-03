@@ -9,5 +9,7 @@
     "laravel-elixir": "^5.0.0",
     "bootstrap-sass": "^3.3.0"
   },
-  "dependencies": {}
+  "dependencies": {
+    "materialize-clockpicker": "^1.0.1"
+  }
 }

@@ -28,7 +28,7 @@ class ProgrammesController extends Controller
             abort(403, 'Nope.');
         }
 
-        $programmes = $programme::listUniqueProgrammeNames();
+        $programmes = Programme::listUniqueProgrammeNames();
 
         $programmeTypes = ProgrammeType::all();
 

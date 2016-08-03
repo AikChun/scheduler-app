@@ -26,6 +26,7 @@ Route::get('/users', 'UsersController@index');
 Route::resource('programmes', 'ProgrammesController');
 Route::resource('programme-types', 'ProgrammeTypesController');
 Route::resource('courses', 'CoursesController');
+Route::resource('group_classes', 'GroupClassesController');
 //Route::get('/programmes/', 'ProgrammesController@index');
 //Route::get('/programmes/create', 'ProgrammesController@create');
 //Route::post('/programmes/store', 'ProgrammesController@store');

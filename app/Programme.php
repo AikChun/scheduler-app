@@ -10,16 +10,16 @@ class Programme extends Model
 {
     protected $fillable = [
         'name',
-        'programme_type_id'
+        'programme_type_name',
+        'year',
+        'semester',
+        'recess_start_date',
+        'recess_end_date'
     ];
+
     public function courses()
     {
         return $this->hasMany(Course::class);
-    }
-
-    public function programmeType()
-    {
-        return $this->belongsTo(ProgrammeType::class);
     }
 
     public function facilitator()
@@ -29,8 +29,8 @@ class Programme extends Model
 
     public static function listUniqueProgrammeNames()
     {
-        return array_map(function($programme) {
+        return self::all()->map(function($programme) {
             return $programme->name;
-        }, self::all()->toArray());
+        });
     }
 }

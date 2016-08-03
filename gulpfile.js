@@ -27,11 +27,14 @@ elixir(function(mix) {
         ], 'public/js/main.js');
 
     mix.scripts([
-        'libs/sweetalert-dev.js'
+        'libs/sweetalert-dev.js',
+        'libs/moment.js',
+        'libs/bootstrap-material-datetimepicker.js'
         ], 'public/js/libs.js')
         .styles([
             'libs/jquery-validation.css',
-            'libs/sweetalert.css'
+            'libs/sweetalert.css',
+            'libs/bootstrap-material-datetimepicker.css'
         ], 'public/css/libs.css');
 
 });

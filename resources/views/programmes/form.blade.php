@@ -25,7 +25,7 @@
     <input id="name" type="text" name="name" datalist="programmes">
     <datalist id="programmes">
         @foreach($programmes as $programme)
-            <option value="{{ $programme->name }}">
+            <option value="{{ $programme }}">
         @endforeach
     </datalist>
   </div>

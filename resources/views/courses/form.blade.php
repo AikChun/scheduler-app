@@ -1,3 +1,4 @@
+{{ csrf_field() }}
 <div class="row">
   <div class="input-field col s12">
     <select name="programme_id" value="{{ old('programme_id') }}">
@@ -46,19 +47,16 @@
 </div>
 
 <div class="row">
-  <label >Start Date</label>
-</div>
-<div class="row">
   <div class="input-field col s12 m6 l6">
-    <input type="date" name="start_date" id="startDate" value="{{ date("Y-m-j") }}">
+    <label for="start_date">Start Date</label>
+    <input type="text" name="start_date" id="date-start" >
   </div>
 </div>
-<div class="row">
-  <label >End Date</label>
-</div>
+
 <div class="row">
   <div class="input-field col s12 m6 l6">
-    <input type="date" name="end_date" id="endDate" value="{{ date("Y-m-j") }}">
+    <label for="end_date">End Date</label>
+    <input type="text" name="end_date" id="date-end" >
   </div>
 </div>
 <div class="row">

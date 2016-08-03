@@ -18,6 +18,7 @@ class Course extends Model
         'end_date'
     ];
 
+
     public function programme()
     {
         return $this->belongsTo(Programme::class);

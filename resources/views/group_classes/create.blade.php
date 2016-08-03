@@ -5,8 +5,9 @@
     <div class="card-panel">
       <h4 class="header2">Create new Course</h4>
       <div class="row">
-        <form class="col s12 " method="POST" action="/courses" >
-          @include('courses.form')
+        <form class="col s12 " method="POST" action="/group_classes" >
+          {{ csrf_field() }}
+          @include('group_classes.form')
         </form>
       </div>
     </div>
@@ -16,8 +17,8 @@
 @section('js')
 <script>
 //$('#date-end').bootstrapMaterialDatePicker({ weekStart : 0 });
-$('#date-end').bootstrapMaterialDatePicker({ format : 'DD-MM-YYYY HH:mm:ss' });
-$('#date-start').bootstrapMaterialDatePicker({ format : 'DD-MM-YYYY HH:mm:ss' }).on('change', function(e, date)
+$('#date-end').bootstrapMaterialDatePicker({ format : 'DD-MM-YYYY HH:mm' });
+$('#date-start').bootstrapMaterialDatePicker({ format : 'DD-MM-YYYY HH:mm' }).on('change', function(e, date)
 {
 $('#date-end').bootstrapMaterialDatePicker('setMinDate', date);
 });

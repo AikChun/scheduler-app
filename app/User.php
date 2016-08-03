@@ -29,4 +29,12 @@ class User extends Authenticatable
         return $this->belongsTo(Role::class);
     }
 
+    public static function findAllLecturers()
+    {
+
+        return User::whereHas('role', function($q) {
+            $q->where(['position'  => "Lecturer"]);
+        })->get();
+    }
+
 }

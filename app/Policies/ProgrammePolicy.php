@@ -10,15 +10,16 @@ class ProgrammePolicy
 {
     public function add(User $user, Programme $programme)
     {
-        return $user->role->id < 3;
+        return $user['role']['id'] < 3;
     }
+
     public function update(User $user, Programme $programme)
     {
-        return $user->role->id < 3;
+        return $user['role']['id'] < 3;
     }
 
     public function delete(User $user, Programme $programme)
     {
-        return $user->role->id < 3;
+        return $user['role']['id'] < 3;
     }
 }

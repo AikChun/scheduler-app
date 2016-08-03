@@ -15,8 +15,7 @@ class CreateProgrammesTable extends Migration
         Schema::create('programmes', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->integer('programme_type_id')->unsigned();
-            $table->foreign('programme_type_id')->references('id')->on('programme_types')->onDelete('cascade');
+            $table->string('programme_type_name');
             $table->integer('facilitator')->unsigned();
             $table->datetime('recess_start_date');
             $table->datetime('recess_end_date');
