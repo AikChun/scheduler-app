@@ -31,6 +31,18 @@
   </div>
 </div>
 
+<div class="row">
+  <div class="input-field col s12">
+    <select name="facilitator_id" value="{{ old('facilitator_id') }}">
+      <option value="" disabled selected>Choose Facilitator</option>
+      @foreach($facilitators as $facilitator)
+        <option value="{{ $facilitator->id }}">{{ $facilitator->title }}</option>
+      @endforeach
+    </select>
+    <label>Select Facilitator</label>
+  </div>
+</div>
+
 
 <div class="row">
   <div class="input-field col s12">
@@ -44,6 +56,19 @@
   </div>
 </div>
 
+<div class="row">
+  <div class="input-field col s12 m12 l12">
+    <label for="recess_start_date">Recess Start Date</label>
+    <input type="text" id="start_date" name="recess_start_date" >
+  </div>
+</div>
+
+<div class="row">
+  <div class="input-field col s12 m12 l12">
+    <label for="end_date">Recess End Date</label>
+    <input type="text" name="end_date" id="end_date" >
+  </div>
+</div>
 <div class="row">
   <div class="input-field col s12">
     <select id="semester" name="semester" >

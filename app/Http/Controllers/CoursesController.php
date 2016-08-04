@@ -42,13 +42,15 @@ class CoursesController extends Controller
     public function store(CourseRequest $request)
     {
 
-        $course                     = new Course;
-        $course->title              = $request->title;
-        $course->code               = $request->code;
-        $course->number_of_groups   = $request->number_of_groups;
-        $course->number_of_students = $request->number_of_students;
-        $course->start_date         = Carbon::parse($request->start_date);
-        $course->end_date           = Carbon::parse($request->end_date);
+        $course                               = new Course;
+        $course->code                         = $request->code;
+        $course->title                        = $request->title;
+        $course->end_date                     = Carbon::parse($request->end_date);
+        $course->start_date                   = Carbon::parse($request->start_date);
+        $course->programme_id                 = $request->programme_id;
+        $course->number_of_groups             = $request->number_of_groups;
+        $course->number_of_students           = $request->number_of_students;
+        $course->estimated_number_of_students = $request->number_of_students;
         $course->save();
         flash()->success('Success!', 'You have created a new Course! start date: '. $request->start_date. 'end date: ' . $request->end_date);
         return back();

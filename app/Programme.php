@@ -10,11 +10,12 @@ class Programme extends Model
 {
     protected $fillable = [
         'name',
-        'programme_type_name',
         'year',
         'semester',
+        'facilitator_id',
+        'recess_end_date',
         'recess_start_date',
-        'recess_end_date'
+        'programme_type_id'
     ];
 
     public function courses()
@@ -24,7 +25,7 @@ class Programme extends Model
 
     public function facilitator()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'facilitator_id');
     }
 
     public static function listUniqueProgrammeNames()
