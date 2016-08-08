@@ -41,6 +41,7 @@ class CoursesController extends Controller
     */
     public function store(CourseRequest $request)
     {
+        $courseCode                           = CourseCode::firstOrCreate(['code' => $request->code]);
 
         $course                               = new Course;
         $course->code                         = $request->code;

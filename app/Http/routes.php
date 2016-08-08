@@ -20,8 +20,10 @@ Route::get('/', function () {
 
 Route::auth();
 
-Route::get('/home', 'HomeController@index');
+Route::get('/home', 'HomeController@dashboard');
 Route::get('/users', 'UsersController@index');
+Route::get('/users/create', 'UsersController@create');
+Route::post('/users/store', 'UsersController@store');
 
 Route::resource('programmes', 'ProgrammesController');
 Route::resource('programme-types', 'ProgrammeTypesController');

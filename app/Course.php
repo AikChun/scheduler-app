@@ -18,15 +18,13 @@ class Course extends Model
         'end_date'
     ];
 
-
     public function programme()
     {
         return $this->belongsTo(Programme::class);
     }
 
-    public function groupClasses()
+    public function classes()
     {
         return $this->hasMany(GroupClass::class);
     }
-
 }

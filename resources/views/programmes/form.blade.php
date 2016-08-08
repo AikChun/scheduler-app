@@ -22,10 +22,10 @@
 <div class="row">
   <div class="input-field col s12">
     <label for="name">Name*</label>
-    <input id="name" type="text" name="name" datalist="programmes">
+    <input id="name" type="text" name="name" list="programmes" >
     <datalist id="programmes">
-        @foreach($programmes as $programme)
-            <option value="{{ $programme }}">
+        @foreach($programmeNames as $programmeName)
+            <option value="{{ $programmeName->name }}">
         @endforeach
     </datalist>
   </div>
@@ -35,9 +35,9 @@
   <div class="input-field col s12">
     <select name="facilitator_id" value="{{ old('facilitator_id') }}">
       <option value="" disabled selected>Choose Facilitator</option>
-      @foreach($facilitators as $facilitator)
-        <option value="{{ $facilitator->id }}">{{ $facilitator->title }}</option>
-      @endforeach
+       @foreach($facilitators as $facilitator)
+        <option value="{{ $facilitator->id }}">{{ $facilitator->name }}</option>
+        @endforeach
     </select>
     <label>Select Facilitator</label>
   </div>
@@ -59,14 +59,14 @@
 <div class="row">
   <div class="input-field col s12 m12 l12">
     <label for="recess_start_date">Recess Start Date</label>
-    <input type="text" id="start_date" name="recess_start_date" >
+    <input type="text" id="recess_start_date" name="recess_start_date" >
   </div>
 </div>
 
 <div class="row">
   <div class="input-field col s12 m12 l12">
     <label for="end_date">Recess End Date</label>
-    <input type="text" name="end_date" id="end_date" >
+    <input type="text" name="recess_end_date" id="recess_end_date" >
   </div>
 </div>
 <div class="row">

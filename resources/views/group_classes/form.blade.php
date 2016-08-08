@@ -27,6 +27,18 @@
 
 <div class="row">
   <div class="input-field col s12">
+    <label> Venue</label>
+    <input type="text" name="venue" list="venueList">
+    <datalist>
+        @foreach($venues as $venue)
+            <option value="{{ $venue->name }}">
+        @endforeach
+    </datalist>
+  </div>
+</div>
+
+<div class="row">
+  <div class="input-field col s12">
     <label>Hours</label>
     <input type="number" name="hours">
   </div>

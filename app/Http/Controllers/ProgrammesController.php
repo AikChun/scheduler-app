@@ -1,11 +1,14 @@
 <?php
 
 namespace App\Http\Controllers;
-use Gate;
-use App\ProgrammeType;
-use App\Programme;
-use Illuminate\Http\Request;
+
 use App\Http\Requests\ProgrammeRequest;
+use App\Programme;
+use App\ProgrammeName;
+use App\ProgrammeType;
+use Carbon\Carbon;
+use Gate;
+use Illuminate\Http\Request;
 
 class ProgrammesController extends Controller
 {
@@ -24,15 +27,17 @@ class ProgrammesController extends Controller
     public function create()
     {
         $programme = new Programme;
-        if(Gate::denies('update', $programme )) {
+        if (Gate::denies('update', $programme)) {
             abort(403, 'Nope.');
         }
 
-        $programmes = Programme::listUniqueProgrammeNames();
+        $programmeNames = ProgrammeName::all();
 
         $programmeTypes = ProgrammeType::all();
 
-        return view('programmes.create', compact('programmeTypes', 'programmes'));
+        $facilitators   = \App\Role::where('position', 'Lecturer')->first()->users;
+
+        return view('programmes.create', compact('programmeTypes', 'programmeNames', 'facilitators'));
     }
 
     /**
@@ -46,8 +51,10 @@ class ProgrammesController extends Controller
         // Find or create programme type
         $programmeType = ProgrammeType::firstOrCreate(['name' => $request->programme_type_name]);
 
-        //create Programme
+        // Find or create programme name
+        $programmeName = ProgrammeName::firstOrCreate(['name' => $request->name]);
 
+        //create Programme
         $programme                      = new Programme;
         $programme->name                = $request->name;
         $programme->year                = $request->year;

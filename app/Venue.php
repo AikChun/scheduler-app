@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class ProgrammeName extends Model
+class Venue extends Model
 {
     protected $fillable = [
         'name'

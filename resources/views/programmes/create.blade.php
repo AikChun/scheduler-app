@@ -5,7 +5,7 @@
     <div class="card-panel">
       <h4 class="header2">Create new Programme</h4>
       <div class="row">
-        <form class="col s12 " method="POST" action="/programmes" autocomplete="off">
+        <form class="col s12 " method="POST" action="/programmes" >
           {{ csrf_field() }}
           @include('programmes.form')
         </form>
@@ -14,4 +14,13 @@
   </div>
 </div>
 @endsection
-
+@section('js')
+<script>
+//$('#date-end').bootstrapMaterialDatePicker({ weekStart : 0 });
+$('#recess_end_date').bootstrapMaterialDatePicker({ format : 'DD-MM-YYYY HH:mm' });
+$('#recess_start_date').bootstrapMaterialDatePicker({ format : 'DD-MM-YYYY HH:mm' }).on('change', function(e, date)
+{
+$('#recess_end_date').bootstrapMaterialDatePicker('setMinDate', date);
+});
+</script>
+@endsection

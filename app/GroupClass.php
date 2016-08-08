@@ -1,10 +1,12 @@
 <?php
-
 namespace App;
 
+use App\Course;
 use App\GroupClass;
+use App\User;
 use DB;
 use Illuminate\Database\Eloquent\Model;
+
 class GroupClass extends Model
 {
     //
@@ -13,12 +15,16 @@ class GroupClass extends Model
     */
     public function lecturer()
     {
-        return $this->belongsTo(App\User::class, 'lecturer_id');
+        return $this->belongsTo(User::class, 'lecturer_id');
     }
 
     public function course()
     {
-        return $this->belongsTo(App\Course::class);
+        return $this->belongsTo(Course::class);
     }
 
+    public function getStartDateAttribute($value)
+    {
+        return date('l d-m-Y H:i', strtotime($value));
+    }
 }

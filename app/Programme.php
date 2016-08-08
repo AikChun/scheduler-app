@@ -28,10 +28,4 @@ class Programme extends Model
         return $this->belongsTo(User::class, 'facilitator_id');
     }
 
-    public static function listUniqueProgrammeNames()
-    {
-        return self::all()->map(function($programme) {
-            return $programme->name;
-        });
-    }
 }

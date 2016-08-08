@@ -36,7 +36,7 @@
 <div class="row">
   <div class="input-field col s12">
     <label for="number_of_students">Number Of Students</label>
-    <input  id="number_of_students" type="text" name="number_of_students" value="{{ old('number_of_students') }}">
+    <input  id="number_of_students" type="number" name="number_of_students" value="{{ old('number_of_students') }}">
   </div>
 </div>
 <div class="row">

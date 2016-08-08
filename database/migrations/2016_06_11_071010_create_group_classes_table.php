@@ -14,6 +14,7 @@ class CreateGroupClassesTable extends Migration
     {
         Schema::create('group_classes', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('name');
             $table->dateTime('end_date');
             $table->dateTime('start_date');
             $table->integer('course_id');

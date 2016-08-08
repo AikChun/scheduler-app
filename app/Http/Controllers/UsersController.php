@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
 use App\Http\Requests;
+use App\Role;
 use App\User;
+use Illuminate\Http\Request;
 use \DB;
 
 class UsersController extends Controller
@@ -16,7 +16,6 @@ class UsersController extends Controller
         $this->middleware('auth');
     }
 
-    //
     /**
     * Show list of users
     */
@@ -25,5 +24,4 @@ class UsersController extends Controller
         $users = DB::table('users')->paginate(10);
         return view('users.index', compact('users'));
     }
-
 }

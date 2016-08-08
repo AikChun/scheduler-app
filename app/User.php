@@ -3,6 +3,8 @@
 namespace App;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use App\Role;
+use App\GroupClass;
 
 class User extends Authenticatable
 {
@@ -12,7 +14,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'role_id'
     ];
 
     /**
@@ -37,4 +39,22 @@ class User extends Authenticatable
         })->get();
     }
 
+    public static function findLecturers()
+    {
+        return Role::where('position', 'Lecturer')->first()->users;
+    }
+
+    public function is($roleName)
+    {
+        if($this->role == $roleName) {
+            return true;
+        }
+
+        return false;
+    }
+
+    public function classes()
+    {
+        return $this->hasMany(GroupClass::class, 'lecturer_id');
+    }
 }
