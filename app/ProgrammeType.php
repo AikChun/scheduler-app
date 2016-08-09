@@ -2,7 +2,6 @@
 
 namespace App;
 
-use App\Programme;
 use Illuminate\Database\Eloquent\Model;
 
 class ProgrammeType extends Model

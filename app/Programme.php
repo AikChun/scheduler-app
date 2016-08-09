@@ -3,7 +3,6 @@
 namespace App;
 
 use App\Course;
-use App\ProgrammeType;
 use Illuminate\Database\Eloquent\Model;
 
 class Programme extends Model
@@ -26,6 +25,11 @@ class Programme extends Model
     public function facilitator()
     {
         return $this->belongsTo(User::class, 'facilitator_id');
+    }
+
+    public function programme_type()
+    {
+        return $this->belongsTo(ProgrammeType::class);
     }
 
 }
