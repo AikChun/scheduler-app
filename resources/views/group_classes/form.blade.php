@@ -29,7 +29,7 @@
   <div class="input-field col s12">
     <label> Venue</label>
     <input type="text" name="venue" list="venueList">
-    <datalist>
+    <datalist id="venueList">
         @foreach($venues as $venue)
             <option value="{{ $venue->name }}">
         @endforeach

@@ -33,6 +33,40 @@ class GroupClassesController extends Controller
     {
         $venue = Venue::firstOrCreate(['name' => $request->venue]);
 
+        //search for clashing venue and time.
+        $course = Course::find($request->course_id);
+
+        $courseStartDate = $course->start_date;
+        $courseEndDate   = $course->end_date;
+
+        $coursesClashing = Course::with('groupClasses')->where([
+            ['start_date', '<=', $courseEndDate],
+            ['end_date', '>=', $courseEndDate],
+        ])->orWhere([
+            ['start_date', '<=', $courseStartDate],
+            ['end_date', '>=', $courseStartDate],
+        ])->orWhere([
+            ['start_date', '>=', $courseStartDate],
+            ['end_date', '<=', $courseEndDate],
+        ])->get()->toArray();
+
+        $clashingClasses = null;
+        if(count($coursesClashing) > 0) {
+            foreach($coursesClashing as $courseClashing) {
+
+                $clashingClasses =  array_filter($courseClashing['group_classes'], function($class) use($request) {
+                    return GroupClass::clashingDayAndTime($class, $request->day, $request->venue, $request->start_time, $request->end_time);
+                });
+            }
+
+            if(!empty($clashingClasses) > 0) {
+                flash()->error('Error!', "You have clashing dates!");
+                return redirect()->back();
+            }
+        }
+
+
+
         $groupClass               = new GroupClass;
 
         $groupClass->total_hours  = $request->total_hours;
