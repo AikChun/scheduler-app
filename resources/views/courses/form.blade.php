@@ -3,8 +3,8 @@
   <div class="input-field col s12">
     <select name="programme_id" value="{{ old('programme_id') }}">
       <option value="" disabled selected>Choose Programme</option>
-      @foreach($programmeNames as $programme)
-        <option value="{{ $programme->id }}">{{ $programme->name }}</option>
+      @foreach($programmes as $programme)
+          <option value="{{ $programme->id }}">{{ $programme->programme_type->name . ' (' .  $programme->year . '/S' . $programme->semester . ')'}}</option>
       @endforeach
     </select>
     <label>Select Programme</label>

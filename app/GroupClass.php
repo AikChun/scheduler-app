@@ -9,7 +9,16 @@ use Illuminate\Database\Eloquent\Model;
 
 class GroupClass extends Model
 {
-    //
+    protected $fillable = [
+        'group_name',
+        'total_hours',
+        'day',
+        'start_time',
+        'end_time',
+        'course_id',
+        'lecturer_id',
+        'group_number',
+    ];
     /**
     * List all the classes order by start_time
     */

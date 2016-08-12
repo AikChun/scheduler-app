@@ -24,14 +24,15 @@ class CoursesController extends Controller
     public function create()
     {
         // Grab all the programme names
-        $programmeNames = Programme::all();
+        $programmes = Programme::all();
 
         // Grab all the course titles
         $courseTitles = CourseTitle::all();
 
         // Grab all the course codes
         $courseCodes = CourseCode::all();
-        return view('courses.create', compact('programmeNames', 'courseTitles', 'courseCodes'));
+
+        return view('courses.create', compact('programmes', 'courseTitles', 'courseCodes'));
     }
 
     /**
@@ -52,8 +53,11 @@ class CoursesController extends Controller
         $course->number_of_groups             = $request->number_of_groups;
         $course->number_of_students           = $request->number_of_students;
         $course->estimated_number_of_students = $request->number_of_students;
-        $course->save();
-        flash()->success('Success!', 'You have created a new Course! start date: '. $request->start_date. 'end date: ' . $request->end_date);
+        if(!$course->save()) {
+            flash()->error('Error!', 'something went wrong');
+        } else {
+            flash()->success('Success!', 'You have created a new Course! start date: '. $request->start_date. 'end date: ' . $request->end_date);
+        }
         return back();
         //return redirect()->action('CoursesController@create');
     }

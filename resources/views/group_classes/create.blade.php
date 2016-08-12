@@ -17,10 +17,10 @@
 @section('js')
 <script>
 //$('#date-end').bootstrapMaterialDatePicker({ weekStart : 0 });
-$('#date-end').bootstrapMaterialDatePicker({ format : 'DD-MM-YYYY HH:mm' });
-$('#date-start').bootstrapMaterialDatePicker({ format : 'DD-MM-YYYY HH:mm' }).on('change', function(e, date)
+$('#start_time').bootstrapMaterialDatePicker({ format : 'HH:mm', date: false });
+$('#end_time').bootstrapMaterialDatePicker({ format : 'HH:mm', date: false }).on('change', function(e, date)
 {
-$('#date-end').bootstrapMaterialDatePicker('setMinDate', date);
+$('#end_time').bootstrapMaterialDatePicker('setMinDate', date);
 });
 </script>
 @endsection

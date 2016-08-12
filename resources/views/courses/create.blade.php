@@ -5,7 +5,7 @@
     <div class="card-panel">
       <h4 class="header2">Create new Course</h4>
       <div class="row">
-        <form class="col s12 " method="POST" action="/courses" autocomplete="off">
+        <form class="col s12 " method="POST" action="/courses" >
           @include('courses.form')
         </form>
       </div>

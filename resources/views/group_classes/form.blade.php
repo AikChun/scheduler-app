@@ -39,8 +39,8 @@
 
 <div class="row">
   <div class="input-field col s12">
-    <label>Hours</label>
-    <input type="number" name="hours">
+    <label>Total Hours</label>
+    <input type="number" name="total_hours">
   </div>
 </div>
 
@@ -66,15 +66,31 @@
 </div>
 
 <div class="row">
+  <div class="input-field col s12">
+    <select name="day" value="{{ old('day') }}">
+      <option value="" disabled selected>Choose Day of the Week</option>
+        <option value="Sunday">Sunday</option>
+        <option value="Monday">Monday</option>
+        <option value="Tuesday">Tuesday</option>
+        <option value="Wednesday">Wednesday</option>
+        <option value="Thursday">Thursday</option>
+        <option value="Friday">Friday</option>
+        <option value="Saturday">Saturday</option>
+    </select>
+
+  </div>
+</div>
+
+<div class="row">
   <div class="input-field col s12 m12 l12">
-    <label for="start_date">Start Date</label>
-    <input type="text" id="date-start" class="form-control" name="start_date" >
+    <label for="start_time">Start Time</label>
+   <input type="text" id="start_time" class="form-control" name="start_time" >
   </div>
 </div>
 <div class="row">
   <div class="input-field col s12 m12 l12">
-    <label for="end_date">End Date</label>
-    <input type="text" name="end_date" id="date-end" >
+    <label for="end_time">End Time</label>
+    <input type="text" name="end_time" id="end_time" >
   </div>
 </div>
 <div class="row">

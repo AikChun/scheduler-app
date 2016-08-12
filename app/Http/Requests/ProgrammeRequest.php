@@ -24,7 +24,7 @@ class ProgrammeRequest extends Request
     public function rules()
     {
         return [
-            'name'                => 'required',
+//            'name'                => 'required',
             'programme_type_name' => 'required',
             'semester'            => 'required',
             'year'                => 'required',

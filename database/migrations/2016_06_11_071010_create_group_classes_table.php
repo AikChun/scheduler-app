@@ -14,12 +14,12 @@ class CreateGroupClassesTable extends Migration
     {
         Schema::create('group_classes', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
-            $table->dateTime('end_date');
-            $table->dateTime('start_date');
+            $table->string('day');
+            $table->time('start_time');
+            $table->time('end_time');
             $table->integer('course_id');
             $table->integer('group_number');
-            $table->integer('hours');
+            $table->integer('total_hours');
             $table->integer('lecturer_id');
             $table->string('group_name');
             $table->string('venue');

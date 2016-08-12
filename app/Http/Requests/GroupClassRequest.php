@@ -26,9 +26,9 @@ class GroupClassRequest extends Request
         return [
             'course_id'   => 'required',
             'lecturer_id' => 'required',
-            'hours'       => 'required',
-            'start_date'  => 'required',
-            'end_date'    => 'required',
+            'total_hours' => 'required',
+            'start_time'  => 'required',
+            'end_time'    => 'required'
 
         ];
     }

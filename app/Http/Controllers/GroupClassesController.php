@@ -34,14 +34,16 @@ class GroupClassesController extends Controller
         $venue = Venue::firstOrCreate(['name' => $request->venue]);
 
         $groupClass               = new GroupClass;
-        $groupClass->hours        = $request->hours;
-        $groupClass->venue        = $request->venue;
-        $groupClass->end_date     = Carbon::parse($request->end_date);
+
+        $groupClass->total_hours  = $request->total_hours;
+        $groupClass->venue        = $venue->name;
+        $groupClass->end_time     = $request->end_time;
         $groupClass->course_id    = $request->course_id;
-        $groupClass->start_date   = Carbon::parse($request->start_date);
+        $groupClass->start_time   = $request->start_time;
         $groupClass->group_name   = $request->group_name;
         $groupClass->lecturer_id  = $request->lecturer_id;
         $groupClass->group_number = $request->group_number;
+        $groupClass->day          = $request->day;
 
         $groupClass->save();
 

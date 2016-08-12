@@ -7,7 +7,8 @@ use App\Course;
 
 class CourseCode extends Model
 {
-    //
+    public $timestamps = false;
+
     protected $fillable = [
         'code'
     ];

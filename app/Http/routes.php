@@ -13,14 +13,14 @@
 
 Route::get('/', function () {
     if(Auth::user()) {
-        return redirect()->action('HomeController@index');
+        return redirect()->action('HomeController@dashboard');
     }
     return view('auth.login');
 });
 
 Route::auth();
 
-Route::get('/home', 'HomeController@dashboard');
+Route::get('/dashboard', 'HomeController@dashboard');
 Route::get('/users', 'UsersController@index');
 Route::get('/users/create', 'UsersController@create');
 Route::post('/users/store', 'UsersController@store');
