@@ -19,6 +19,7 @@ class GroupClass extends Model
         'course_id',
         'lecturer_id',
         'group_number',
+        'number_of_students'
     ];
     /**
     * List all the classes order by start_time

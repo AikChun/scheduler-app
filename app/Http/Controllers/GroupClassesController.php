@@ -87,17 +87,18 @@ class GroupClassesController extends Controller
         }
 
 
-        $groupClass               = new GroupClass;
+        $groupClass                     = new GroupClass;
 
-        $groupClass->total_hours  = $request->total_hours;
-        $groupClass->venue        = $venue->name;
-        $groupClass->end_time     = $request->end_time;
-        $groupClass->course_id    = $request->course_id;
-        $groupClass->start_time   = $request->start_time;
-        $groupClass->group_name   = $request->group_name;
-        $groupClass->lecturer_id  = $request->lecturer_id;
-        $groupClass->group_number = $request->group_number;
-        $groupClass->day          = $request->day;
+        $groupClass->total_hours        = $request->total_hours;
+        $groupClass->venue              = $venue->name;
+        $groupClass->end_time           = $request->end_time;
+        $groupClass->course_id          = $request->course_id;
+        $groupClass->start_time         = $request->start_time;
+        $groupClass->group_name         = $request->group_name;
+        $groupClass->lecturer_id        = $request->lecturer_id;
+        $groupClass->group_number       = $request->group_number;
+        $groupClass->number_of_students = $request->number_of_students;
+        $groupClass->day                = $request->day;
 
         $groupClass->save();
 

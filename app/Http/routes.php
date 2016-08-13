@@ -24,6 +24,7 @@ Route::get('/dashboard', 'HomeController@dashboard');
 Route::get('/users', 'UsersController@index');
 Route::get('/users/create', 'UsersController@create');
 Route::post('/users/store', 'UsersController@store');
+Route::get('/users/send_schedule/{user}', 'UsersController@send_schedule');
 
 Route::resource('programmes', 'ProgrammesController');
 Route::resource('programme-types', 'ProgrammeTypesController');

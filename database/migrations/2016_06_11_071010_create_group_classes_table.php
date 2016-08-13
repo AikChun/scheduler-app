@@ -19,6 +19,7 @@ class CreateGroupClassesTable extends Migration
             $table->time('end_time');
             $table->integer('course_id');
             $table->integer('group_number');
+            $table->integer('number_of_students');
             $table->integer('total_hours');
             $table->integer('lecturer_id');
             $table->string('group_name');

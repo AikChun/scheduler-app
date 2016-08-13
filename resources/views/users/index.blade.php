@@ -6,6 +6,7 @@
       <tr>
         <td>Name</td>
         <td>Email</td>
+        <td>Send Schedule</td>
       </tr>
     </thead>
     <tbody>
@@ -13,6 +14,7 @@
         <tr>
           <td>{{ $user->name }}</td>
           <td>{{ $user->email }}</td>
+          <td><a href="/users/send_schedule/{{$user->id}}"> Send Schedule </a></td>
         </tr>
       @endforeach
     </tbody>
