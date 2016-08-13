@@ -14,6 +14,11 @@ use App\Venue;
 class GroupClassesController extends Controller
 {
     //
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function create()
     {
         // I want to
@@ -39,7 +44,11 @@ class GroupClassesController extends Controller
         $courseStartDate = $course->start_date;
         $courseEndDate   = $course->end_date;
 
-        $coursesClashing = Course::with('groupClasses')->where([
+        $coursesClashing = Course::with('classes')->where([
+            ['start_date', '=>', $courseEndDate],
+        ])->orWhere([
+            ['end_date', '<=', $courseStartDate],
+        ])->orWhere([
             ['start_date', '<=', $courseEndDate],
             ['end_date', '>=', $courseEndDate],
         ])->orWhere([
@@ -50,21 +59,32 @@ class GroupClassesController extends Controller
             ['end_date', '<=', $courseEndDate],
         ])->get()->toArray();
 
-        $clashingClasses = null;
-        if(count($coursesClashing) > 0) {
-            foreach($coursesClashing as $courseClashing) {
-
-                $clashingClasses =  array_filter($courseClashing['group_classes'], function($class) use($request) {
-                    return GroupClass::clashingDayAndTime($class, $request->day, $request->venue, $request->start_time, $request->end_time);
+        if (count($coursesClashing) > 0) {
+            foreach ($coursesClashing as $courseClashing) {
+                $clashingClasses =  array_filter($courseClashing['classes'], function ($class) use ($request) {
+                    return GroupClass::clashingVenueAndTime($class, $request->day, $request->venue, $request->start_time, $request->end_time);
                 });
-            }
+                if (!empty($clashingClasses) > 0) {
+                    flash()->error('Error!', "You have clashing dates!");
+                    return redirect()->back();
+                }
 
-            if(!empty($clashingClasses) > 0) {
-                flash()->error('Error!', "You have clashing dates!");
-                return redirect()->back();
+                $classesLecturerTeaching = array_filter($courseClashing['classes'], function ($class) use ($request) {
+                    return $class['lecturer_id'] == $request->lecturer_id;
+                });
+
+
+                $classes =  array_filter($classesLecturerTeaching, function ($class) use ($request) {
+                    return GroupClass::clashingTime($class, $request->day, $request->start_time, $request->end_time);
+                });
+
+
+                if (!empty($classes) > 0) {
+                    flash()->error('Error!', "You have clashing dates!");
+                    return redirect()->back();
+                }
             }
         }
-
 
 
         $groupClass               = new GroupClass;

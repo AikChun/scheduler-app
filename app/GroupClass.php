@@ -38,12 +38,18 @@ class GroupClass extends Model
         return date('l d-m-Y H:i', strtotime($value));
     }
 
-    public Static function clashingDayAndTime($class, $day, $venue, $startTime, $endTime)
+    public static function clashingVenueAndTime($class, $day, $venue, $startTime, $endTime)
     {
-        if($class['day'] != $day) {
+        if(!self::clashingTime($class, $day, $startTime, $endTime)) {
             return false;
         }
-        if($class['venue'] != $venue) {
+
+        return $class['venue'] == $venue;
+    }
+
+    public static function clashingTime($class, $day, $startTime, $endTime)
+    {
+        if($class['day'] != $day) {
             return false;
         }
 
@@ -61,17 +67,14 @@ class GroupClass extends Model
         }
 
         if($classStartTime <= $startTime && $startTime <= $classEndTime) {
-            Log::info('clash1');
             return true;
         }
 
         if($classStartTime <= $endTime && $endTime <= $classEndTime) {
-            Log::info('clash2');
             return true;
         }
 
         if($classStartTime > $startTime && $classEndTime < $endTime) {
-            Log::info('clash3');
             return true;
         }
 
