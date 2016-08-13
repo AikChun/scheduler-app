@@ -43,10 +43,11 @@ class CoursesController extends Controller
     public function store(CourseRequest $request)
     {
         $courseCode                           = CourseCode::firstOrCreate(['code' => $request->code]);
+        $courseTitle                          = CourseTitle::firstOrCreate(['title' => $request->title]);
 
         $course                               = new Course;
         $course->code                         = $request->code;
-        $course->title                        = $request->title;
+        $course->title                        = $courseTitle->title;
         $course->end_date                     = Carbon::parse($request->end_date);
         $course->start_date                   = Carbon::parse($request->start_date);
         $course->programme_id                 = $request->programme_id;
@@ -56,7 +57,7 @@ class CoursesController extends Controller
         if(!$course->save()) {
             flash()->error('Error!', 'something went wrong');
         } else {
-            flash()->success('Success!', 'You have created a new Course! start date: '. $request->start_date. 'end date: ' . $request->end_date);
+            flash()->success('Success!', 'You have created a new Course!');
         }
         return back();
         //return redirect()->action('CoursesController@create');

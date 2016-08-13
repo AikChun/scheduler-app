@@ -62,6 +62,17 @@
         </li>
       </ul>
     </li>
+    <li class="no-padding">
+      <ul class="collapsible collapsible-accordion">
+        <li class="bold"><a class="collapsible-header waves-effect waves-cyan "><i class="mdi-action-class"></i> Users</a>
+        <div class="collapsible-body">
+          <ul>
+            <li><a href="/users">All</a></li>
+          </ul>
+        </div>
+        </li>
+      </ul>
+    </li>
 
   </ul>
   <a href="#" data-activates="slide-out" class="sidebar-collapse btn-floating btn-medium waves-effect waves-light cyan" ><i class="mdi-navigation-menu"></i></a>

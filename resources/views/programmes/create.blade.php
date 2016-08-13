@@ -17,8 +17,8 @@
 @section('js')
 <script>
 //$('#date-end').bootstrapMaterialDatePicker({ weekStart : 0 });
-$('#recess_end_date').bootstrapMaterialDatePicker({ format : 'DD-MM-YYYY HH:mm' });
-$('#recess_start_date').bootstrapMaterialDatePicker({ format : 'DD-MM-YYYY HH:mm' }).on('change', function(e, date)
+$('#recess_end_date').bootstrapMaterialDatePicker({ format : 'DD-MM-YYYY', time: false });
+$('#recess_start_date').bootstrapMaterialDatePicker({ format : 'DD-MM-YYYY', time: false }).on('change', function(e, date)
 {
 $('#recess_end_date').bootstrapMaterialDatePicker('setMinDate', date);
 });
