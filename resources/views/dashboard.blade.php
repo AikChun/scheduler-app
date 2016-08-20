@@ -106,7 +106,7 @@
                   <br>
                   @foreach($course->classes as $class)
                     <br>
-                    {{ $class->hours }}
+                    {{ $class->total_hours }}
                     <br>
                   @endforeach
                 </td>
