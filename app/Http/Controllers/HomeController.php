@@ -32,9 +32,9 @@ class HomeController extends Controller
 
     public function dashboard()
     {
-        //$teachers = Role::where('position', 'Lecturer')->first()->users()->with('classes.course.programme')->get();
-        //return $teachers;
+
         $programmes = Programme::with('programme_type')->with('facilitator')->with('courses.classes.lecturer')->get();
+
         return view('dashboard', compact('courses', 'programmes'));
     }
 
