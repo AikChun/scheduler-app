@@ -1,8 +1,12 @@
 <div class="row">
   <div class="input-field col s12">
-    <select name="course_id" value="{{ old('course_id') }}">
-      <option value="" disabled selected>Choose Course</option>
+    <select name="course_id" value="{{ $groupClass->course_id }}">
+      <option value="" disabled>Choose Course</option>
       @foreach($courses as $course)
+        @if($course->id == $groupClass->course_id)
+          <option value="{{ $course->id }}" selected>{{ $course->title }}</option>
+          <?php continue; ?>
+        @endif
         <option value="{{ $course->id }}">{{ $course->title }}</option>
       @endforeach
     </select>
@@ -13,9 +17,13 @@
 
 <div class="row">
   <div class="input-field col s12">
-    <select name="lecturer_id" value="{{ old('lecturer_id') }}">
-      <option value="" disabled selected>Choose lecturer</option>
+    <select name="lecturer_id" value="{{ $groupClass->lecturer->id }}">
+      <option value="" disabled>Choose lecturer</option>
       @foreach($lecturers as $lecturer)
+        @if($lecturer->id == $groupClass->lecturer->id)
+          <option value="{{ $lecturer->id }}" selected>{{ $lecturer->name }}</option>
+          <?php continue; ?>
+        @endif
         <option value="{{ $lecturer->id }}">{{ $lecturer->name }}</option>
       @endforeach
     </select>
@@ -27,7 +35,7 @@
 <div class="row">
   <div class="input-field col s12">
     <label> Venue</label>
-    <input type="text" name="venue" list="venueList">
+    <input type="text" name="venue" list="venueList" value="{{ $groupClass->venue }}">
     <datalist id="venueList">
         @foreach($venues as $venue)
             <option value="{{ $venue->name }}">
@@ -39,35 +47,35 @@
 <div class="row">
   <div class="input-field col s12">
     <label>Total Hours</label>
-    <input type="number" name="total_hours">
+    <input type="number" name="total_hours" value="{{ $groupClass->total_hours }}">
   </div>
 </div>
 
 <div class="row">
   <div class="input-field col s12">
     <label>Group Name</label>
-    <input type="text" name="group_name">
+    <input type="text" name="group_name" value="{{ $groupClass->group_name }}">
   </div>
 </div>
 
 <div class="row">
   <div class="input-field col s12">
     <label>Group Number</label>
-    <input type="number" name="group_number">
+    <input type="number" name="group_number" value="{{ $groupClass->group_number }}">
   </div>
 </div>
 
 <div class="row">
   <div class="input-field col s12">
     <label for="number_of_students">Number Of Students</label>
-    <input  id="number_of_students" type="number" name="number_of_students" value="{{ old('number_of_students') }}">
+    <input  id="number_of_students" type="number" name="number_of_students" value="{{ $groupClass->number_of_students }}">
   </div>
 </div>
 
 <div class="row">
   <div class="input-field col s12">
-    <select name="day" value="{{ old('day') }}">
-      <option value="" disabled selected>Choose Day of the Week</option>
+    <select name="day" value="{{ $groupClass->day }}">
+        <option value="" disabled>Choose Day of the Week</option>
         <option value="Sunday">Sunday</option>
         <option value="Monday">Monday</option>
         <option value="Tuesday">Tuesday</option>
@@ -83,13 +91,13 @@
 <div class="row">
   <div class="input-field col s12 m12 l12">
     <label for="start_time">Start Time</label>
-   <input type="text" id="start_time" class="form-control" name="start_time" >
+      <input type="text" id="start_time" class="form-control" name="start_time" value="{{ date('H:i', strtotime($groupClass->start_time)) }}">
   </div>
 </div>
 <div class="row">
   <div class="input-field col s12 m12 l12">
     <label for="end_time">End Time</label>
-    <input type="text" name="end_time" id="end_time" >
+    <input type="text" name="end_time" id="end_time" value="{{ date('H:i', strtotime($groupClass->end_time)) }}">
   </div>
 </div>
 <div class="row">

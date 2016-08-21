@@ -62,4 +62,36 @@ class CoursesController extends Controller
         return back();
         //return redirect()->action('CoursesController@create');
     }
+
+    public function edit($course_id) {
+        // Grab all the programme names
+        $programmes = Programme::all();
+
+        // Grab all the course titles
+        $courseTitles = CourseTitle::all();
+
+        // Grab all the course codes
+        $courseCodes = CourseCode::all();
+
+        $course =  Course::where('id', $course_id)->with('programme.programme_type')->first();
+
+        return view('courses/edit', compact('course', 'programmes', 'courseTitles', 'courseCodes'));
+    }
+
+    public function update(Request $request, $course_id)
+    {
+        $course                     = Course::findOrFail($course_id);
+
+        $course->programme_id       = $request->programme_id;
+        $course->title              = $request->title;
+        $course->code               = $request->code;
+        $course->number_of_students = $request->number_of_students;
+        $course->number_of_groups   = $request->number_of_groups;
+        $course->start_date         = Carbon::parse($request->start_date);
+        $course->end_date           = Carbon::parse($request->end_date);
+
+        $course->save();
+
+        return redirect()->back();
+    }
 }

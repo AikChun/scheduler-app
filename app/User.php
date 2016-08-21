@@ -57,4 +57,11 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Role::class);
     }
+
+    public static function findUsersWithRole($role)
+    {
+        return self::whereHas('role', function ($query) use ($role) {
+            $query->where('position', $role);
+        })->get();
+    }
 }

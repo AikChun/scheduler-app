@@ -6,6 +6,7 @@ use App\Http\Requests\ProgrammeRequest;
 use App\Programme;
 use App\ProgrammeName;
 use App\ProgrammeType;
+use App\User;
 use Carbon\Carbon;
 use Gate;
 use Illuminate\Http\Request;
@@ -26,8 +27,6 @@ class ProgrammesController extends Controller
 
     public function create()
     {
-        $programme = new Programme;
-
         $programmeNames = ProgrammeName::all();
 
         $programmeTypes = ProgrammeType::all();
@@ -64,6 +63,37 @@ class ProgrammesController extends Controller
         $programme->save();
 
         flash()->success('Success!', 'You have successfully created a new Programme!');
+
+        return redirect()->back();
+    }
+
+    public function edit($programme_id)
+    {
+        $programmeNames = ProgrammeName::all();
+
+        $programmeTypes = ProgrammeType::all();
+
+        $facilitators = User::findUsersWithRole('Lecturer');
+
+        $programme    = Programme::findOrFail($programme_id);
+
+        return view('programmes.edit', compact('programme', 'programmeTypes', 'programmeNames', 'facilitators'));
+    }
+
+    public function update(ProgrammeRequest $request, $programme_id)
+    {
+        $programme                      = Programme::findOrFail($programme_id);
+
+        $programmeType = ProgrammeType::firstOrCreate(['name' => $request->programme_type_name]);
+
+        $programme->year                = $request->year;
+        $programme->semester            = $request->semester;
+        $programme->facilitator_id      = $request->facilitator_id;
+        $programme->recess_end_date     = Carbon::parse($request->recess_end_date);
+        $programme->recess_start_date   = Carbon::parse($request->recess_start_date);
+        $programme->programme_type_id   = $programmeType->id;
+
+        $programme->save();
 
         return redirect()->back();
     }
