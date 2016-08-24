@@ -24,44 +24,42 @@
     <div class="row">
       <div class="col s12 m12 l12 ">
         <ul class="collapsible collapsible-accordion" data-collapsible="accordion">
-          @foreach($programme['courses'] as $course)
+          @foreach($programme->courses as $course)
+            @if(count($course->classes) == 0)
+              <?php continue; ?>
+            @endif
             <li>
               <div class="collapsible-header ">
-                <div class="col l4 m4 s4 " style="max-width: 500px;text-overflow: ellipsis;overflow: hidden;white-space: nowrap;">{{ $course['title'] }} </div>  <div class="col s4 m4 l4"> Code:{{ $course['code'] }} </div>  <div class="col s3 m3 l3">Date: {{ date('d-m-Y', strtotime($course['start_date'])) . ' - '. date('d-m-Y', strtotime($course['end_date'])) }} </div>
+                <div class="col l4 m4 s4 " style="max-width: 500px;text-overflow: ellipsis;overflow: hidden;white-space: nowrap;">{{ $course->title }} </div>  <div class="col s4 m4 l4"> Code:{{ $course->code }} </div>  <div class="col s3 m3 l3">Date: {{ date('d-m-Y', strtotime($course->start_date)) . ' - '. date('d-m-Y', strtotime($course->end_date)) }} </div>
               </div>
               <div class="collapsible-body">
                 <div id="striped-table">
                   <div class="row">
-                    <div class="col s12 m8 l9">
-                      <table class="striped">
+                    <div class="col s12 m12 l12">
+                      <table class="striped" style="float:center;">
                         <thead>
                           <tr>
-                            <th data-field="id">Name</th>
-                            <th data-field="name">Item Name</th>
-                            <th data-field="price">Item Price</th>
+                            <th data-field="group_name">Group Name</th>
+                            <th data-field="number_of_students">Number Of Students</th>
+                            <th data-field="teacher">Teacher</th>
+                            <th data-field="hours">Total Hours</th>
+                            <th data-field="day">Day</th>
+                            <th data-field="time">Time</th>
+                            <th data-field="venue">Venue</th>
                           </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                          <td>Alvin</td>
-                          <td>Eclair</td>
-                          <td>$0.87</td>
-                        </tr>
-                        <tr>
-                          <td>Alan</td>
-                          <td>Jellybean</td>
-                          <td>$3.76</td>
-                        </tr>
-                        <tr>
-                          <td>Jonathan</td>
-                          <td>Lollipop</td>
-                          <td>$7.00</td>
-                        </tr>
-                        <tr>
-                          <td>Shannon</td>
-                          <td>KitKat</td>
-                          <td>$9.99</td>
-                        </tr>
+                        @foreach($course->classes as $class)
+                          <tr>
+                            <td>{{ $class->group_name }}</td>
+                            <td>{{ $class->number_of_students }}</td>
+                            <td>{{ $class->lecturer->name }}</td>
+                            <td>{{ $class->total_hours }}</td>
+                            <td>{{ $class->day }}</td>
+                            <td>{{ $class->start_time . ' - ' . $class->end_time }}</td>
+                            <td>{{ $class->venue }}</td>
+                          </tr>
+                        @endforeach
                         </tbody>
                       </table>
                     </div>
@@ -76,7 +74,6 @@
     </div>
 
   </div>
-
 @endforeach
 
 @endsection

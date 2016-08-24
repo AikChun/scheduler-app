@@ -33,9 +33,9 @@ class HomeController extends Controller
     public function dashboard()
     {
 
-        $programmes = Programme::with('programme_type')->with('facilitator')->with('courses.classes.lecturer')->get();
+        $programmes  = Programme::with('programme_type')->with('facilitator')->with('courses.classes.lecturer')->get();
 
-        return view('dashboard', compact('courses', 'programmes'));
+        return view('dashboard', ['programmes'  => $programmes]);
     }
 
     public function overview()
