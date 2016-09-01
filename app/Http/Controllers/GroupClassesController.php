@@ -111,11 +111,11 @@ class GroupClassesController extends Controller
     {
         $groupClass = GroupClass::findOrFail($id);
 
-        $courses = Course::all();
+        $courses    = Course::all();
 
-        $lecturers = User::findAllLecturers();
+        $lecturers  = User::findAllLecturers();
 
-        $venues = Venue::all();
+        $venues     = Venue::all();
 
         return view('group_classes.edit', compact('groupClass', 'courses', 'lecturers', 'venues'));
     }

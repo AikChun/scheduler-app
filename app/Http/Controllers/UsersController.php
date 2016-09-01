@@ -23,7 +23,10 @@ class UsersController extends Controller
     */
     public function index()
     {
-        $users = DB::table('users')->paginate(10);
+        $users = User::whereHas('role', function($query) {
+            $query->where('position', 'Lecturer');
+        })->paginate(10);
+
         return view('users.index', compact('users'));
     }
 

@@ -97,4 +97,9 @@ class ProgrammesController extends Controller
 
         return redirect()->back();
     }
+
+    public function use_as_template()
+    {
+        return view('programmes.use_as_template');
+    }
 }

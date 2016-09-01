@@ -16,7 +16,7 @@
       <b> Facilitator: {{ $programme->facilitator->name }} </b>
     </div>
     <div class="col s4 m4 l4" >
-      <b>Date: {{ date('d-m-Y', strtotime($programme->recess_start_date)) }} - {{ date('d-m-Y', strtotime($programme->recess_end_date)) }}</b>
+      <b>{{ date('d M', strtotime($programme->recess_start_date)) }} - {{ date('d M', strtotime($programme->recess_end_date)) }}</b>
     </div>
   </div>
   <br/>
@@ -30,7 +30,7 @@
             @endif
             <li>
               <div class="collapsible-header ">
-                <div class="col l4 m4 s4 " style="max-width: 500px;text-overflow: ellipsis;overflow: hidden;white-space: nowrap;">{{ $course->title }} </div>  <div class="col s4 m4 l4"> Code:{{ $course->code }} </div>  <div class="col s3 m3 l3">Date: {{ date('d-m-Y', strtotime($course->start_date)) . ' - '. date('d-m-Y', strtotime($course->end_date)) }} </div>
+                  <div class="col l4 m4 s4 " style="max-width: 500px;text-overflow: ellipsis;overflow: hidden;white-space: nowrap;">{{ $course->title }} </div>  <div class="col s4 m4 l4"> Code:{{ $course->code }} </div>  <!--<div class="col s3 m3 l3"> {{ date('d M', strtotime($course->start_date)) . ' - '. date('d M', strtotime($course->end_date)) }} </div>-->
               </div>
               <div class="collapsible-body">
                 <div id="striped-table">
